@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>CalculatorImpl.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;WebApplicationGUnit&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">mainpackage</a> &gt; <span class="el_source">CalculatorImpl.java</span></div><h1>CalculatorImpl.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package mainpackage;
+
+/**
+ *
+ * @author suley
+ */
+<span class="fc" id="L12">public class CalculatorImpl implements calculatorInterface{</span>
+/*
+  ce test additionne deux entier a &amp; b et on a deux condition a verifier si b&lt;0 ou b&gt;0
+    cas ou b&gt;0 [1 , +infini] : temps que b-- different de 0 ((b-1)!=0) ou b!=1 faite a++ (a+1) 
+    cas ou b&lt;0 : temps que b++ different de 0 ((b+1)!=0) faite a-- (a-1)
+  */
+    @Override
+    public int addition(int a, int b) {
+<span class="fc" id="L20">        int res = a ;</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">        if (b&gt;0)/*[1 , +infini]*/ {</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">            while (b-- != 0)/*[2 , +infini]*/ {                </span>
+<span class="fc" id="L23">             res++  ;   /* res++ = res +1 */</span>
+            }
+            
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        } else if (b&lt;0) {</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">            while (b++ != 0) {                </span>
+<span class="fc" id="L28">               res-- ; </span>
+            }
+        }
+<span class="fc" id="L31">        return res;</span>
+        
+    }
+
+    @Override
+    public int soustrat(int a, int b) {
+<span class="fc" id="L37">         int res = a -b ;</span>
+        
+<span class="fc" id="L39">        return res;</span>
+         }
+
+    @Override
+    public int multiply(int a, int b) {
+<span class="fc" id="L44">        int res = a* b ;</span>
+<span class="fc" id="L45">        return res ;</span>
+    }
+
+    @Override
+public int division(int a, int b) {
+<span class="fc bfc" id="L50" title="All 2 branches covered.">	if (b == 0) {</span>
+<span class="fc" id="L51">		throw new ArithmeticException();</span>
+        }
+<span class="fc" id="L53">	boolean resEstNegatif = false;</span>
+<span class="fc" id="L54">	int res = 0;</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">	if ( a &lt; 0) {</span>
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">		resEstNegatif = !resEstNegatif;</span>
+<span class="fc" id="L57">		a = -a;</span>
+	}
+<span class="fc bfc" id="L59" title="All 2 branches covered.">	if ( b &lt; 0) {</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">		resEstNegatif = !resEstNegatif;</span>
+<span class="fc" id="L61">		b = -b;</span>
+	}
+<span class="fc bfc" id="L63" title="All 2 branches covered.">	while (a &gt; 0) {</span>
+<span class="fc" id="L64">	        a = soustrat(a, b);</span>
+<span class="fc" id="L65">		res++;</span>
+	}
+<span class="fc bfc" id="L67" title="All 2 branches covered.">	if (resEstNegatif) {</span>
+<span class="fc" id="L68">		res = -res;</span>
+        }
+<span class="fc" id="L70">	return res;</span>
+}
+
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
